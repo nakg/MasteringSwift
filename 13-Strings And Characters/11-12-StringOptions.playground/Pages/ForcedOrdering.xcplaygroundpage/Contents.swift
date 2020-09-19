@@ -26,7 +26,12 @@ import Foundation
 /*:
  # Forced Ordering Option
  */
+let upper = "STRING"
+let lower = "string"
 
+upper == lower // false.
+upper.compare(lower, options: [.caseInsensitive]) == .orderedSame // true.
+upper.compare(lower, options: [.caseInsensitive, .forcedOrdering]) == .orderedSame // false. 정렬을 위해 caseInsensitive를 무시한다. 두 문자가 완전히 동일하다면, Forced ordering은 의미가 없다.
 
 
 

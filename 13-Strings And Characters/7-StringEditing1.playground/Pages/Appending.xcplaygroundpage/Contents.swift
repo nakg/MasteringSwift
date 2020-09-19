@@ -25,14 +25,31 @@ import UIKit
  # Appending Strings and Characters
  */
 
+// 문자열 뒤에 새로운 문자열 연결하는 메서드. - Append. void를 리턴한다. 대상 문자열을 직접 변경한다. 상수를 허용하지 않는다.
+//var str = "Hello"
+//str.append(", ")
+//str
+//
+//// Appending 메서드는, String을 리턴한다. 대상 문자열을 직접 변경하지는 않는다.
+//let s = str.appending("Swift")
+//str
+//s
+//
+//// 원하는 포맷으로 구성된, 문자열을 연결할 때 많이 사용한다.
+//"File size is ".appendingFormat("%.1f", 12.3456)
 
 
+var str = "Hello Swift"
+// insert. 하나의 캐릭터를 특정 인덱스에 삽입.
+str.insert(",", at: str.index(str.startIndex, offsetBy: 5)) // ing, ed없다. 원본을 변경한다.
 
+// 파라미터로 입력한 값을 갖는 index를 검색한 후, 가장먼저 걸린것의 index를 리턴한다.
+if let sIndex = str.firstIndex(of: "S") {
+	str.insert(contentsOf: "Awesome", at: sIndex)
+}
 
-
-
-
-
+str.insert(" ", at: str.index(str.endIndex, offsetBy: -5))
+str
 
 
 

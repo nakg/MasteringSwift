@@ -28,7 +28,25 @@ import UIKit
  # Convenience Initializer
  ![convenience](convenience.png)
  */
+class Position {
+	var x: Double
+	var y: Double
+	
+	// 모든 속성을 초기화 하는, Desginated initialzier 생성.
+	init(x: Double, y: Double) {
+		self.x = x
+		self.y = y
+	}
+	
+	// Convenience initializer는 모든 속성을 초기화 할 필요 없다. 필요한 속성만 초기화 한 후, 클래스 내에 다른 initilizer를 호출하여 나머지 property를 초기화한다.
+	convenience init(x: Double) {
+		self.init(x: x, y: 0.0)
+	}
+}
 
+let a = Position(x: 4)
+a.x // 4
+a.y // 0
 
 
 

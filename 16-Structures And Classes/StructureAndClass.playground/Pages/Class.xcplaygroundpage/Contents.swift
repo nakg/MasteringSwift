@@ -28,8 +28,21 @@ import Foundation
  ![Class](class.png)
  */
 
+class Person {
+	// 이번에는 속성을 선언하면서, 초기값을 만들어보자.
+	var name = "John Doe"
+	var age = 0
+	
+	func speak() {
+		print("Hello")
+	}
+}
 
-
+// 새로운 인스턴스를 생성하고 멤버에 접근해보자.
+let p = Person() // 생성자로 생성.
+p.name
+p.age
+p.speak()
 
 
 

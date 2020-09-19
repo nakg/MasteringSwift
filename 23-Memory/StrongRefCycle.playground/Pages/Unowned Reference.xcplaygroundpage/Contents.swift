@@ -56,8 +56,8 @@ var rentedCar: Car? = Car(model: "Porsche", lessee: person!)
 
 person?.car = rentedCar
 
-person = nil
-rentedCar = nil
+person = nil // deinit
+rentedCar = nil // deinit
 
 
 

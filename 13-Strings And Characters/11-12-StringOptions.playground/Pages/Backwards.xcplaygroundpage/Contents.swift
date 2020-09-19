@@ -29,10 +29,14 @@ import Foundation
 
 let korean = "행복하세요"
 let english = "Be happy"
-let arabic = "كن سعيدا"
 
+if let range = english.range(of: "p") {
+	english.distance(from: english.startIndex, to: range.lowerBound) // 5가 출력. 6번째
+}
 
-
+if let range = english.range(of: "p", options: [.backwards]) {
+	english.distance(from: english.startIndex, to: range.lowerBound) // 6이 출력. 7번째. 우측부터 p를 탐색한 결과가 나온다.
+}
 
 
 

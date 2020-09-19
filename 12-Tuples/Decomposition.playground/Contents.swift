@@ -26,7 +26,16 @@ import UIKit
  ![decomposition](decomposition.png)
  */
 
+let data = ("<html>", 200, "OK", 12.34)
 
+// 튜플의 멤버들을, 개별상수에 저장. - 튜플 디컴포지션 문법은 아니다.
+//let body = data.0
+//let code = data.1
+//let message = data.2
+//let size = data.3
+
+// tuple decomposition. 튜플은 단일 상수로 분해되어서, 앞에서부터 순서대로 저장된다.
+let (body, code, message, size) = data
 
 
 

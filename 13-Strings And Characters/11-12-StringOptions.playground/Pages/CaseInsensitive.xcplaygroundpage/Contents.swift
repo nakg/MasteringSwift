@@ -24,8 +24,9 @@ import UIKit
 /*:
  # Case Insensitive Option
  */
-
-
+"A" == "a" // false.
+"A".caseInsensitiveCompare("a") == .orderedSame // true. 단순 대소문자 비교 안하고만 싶을 때에는 이걸 사용.
+"A".compare("a", options: [.caseInsensitive]) == .orderedSame // true. 대소문자 비교안하면서 다른 옵션 사용하고 싶을 때 사용.
 
 
 

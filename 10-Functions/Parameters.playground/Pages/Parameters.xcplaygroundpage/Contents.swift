@@ -26,6 +26,10 @@ import UIKit
  ![define](define.png)
  ![param](param.png)
  */
+func add(a: Int, b: Int) -> Int {
+	return a + b
+}
+
 
 
 
@@ -46,7 +50,7 @@ import UIKit
  ## Calling Functions
  ![call](call.png)
  */
-
+add(a: 12, b: 34)
 
 
 
@@ -65,7 +69,12 @@ import UIKit
  ## Default Value
  ![defval](defval.png)
  */
+func sayHello(to: String = "Stranger") {
+	print("Hello, \(to)")
+}
 
+sayHello(to: "Swift")
+sayHello()
 
 
 

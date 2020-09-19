@@ -28,6 +28,24 @@ import UIKit
  ![closure](closure.png)
  */
 
+let c = { print("Hello, Swift") }
+
+//c()
+
+
+
+
+
+let testClosure = { (str: String) -> String in
+	return "Hello, \(str)"
+}
+let result = testClosure("Test Closure")
+print(result)
+
+func startClosure(closure: (String) -> String) {
+	print(closure("Testing Parameter Closure"))
+}
+startClosure(closure: testClosure)
 
 
 
@@ -35,6 +53,19 @@ import UIKit
 
 
 
+// 클로져를 파라미터로 전달해보기.
+typealias SimpleStringClosure = (String) -> String
+
+func perform(closure: SimpleStringClosure) {
+	print(closure("iOS"))
+}
+
+perform(closure: testClosure) // Hello, iOS 리턴.
+
+// argument에 클로져 자체를 넣어보자.
+perform(closure: { (str: String) -> String in
+	return "Hi, \(str)"
+})
 
 
 

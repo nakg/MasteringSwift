@@ -29,8 +29,14 @@ import UIKit
  ![type2](type2.png)
  */
 
+// 저장형식속성의 문법
+class Math {
+	static let pi = 3.14
+}
 
-
+let m = Math()
+//m.pi
+Math.pi // pi 저장형식속성은, 여기서 초기화가 처음된다.
 
 
 
@@ -41,6 +47,18 @@ import UIKit
  ![type4](type4.png)
  */
 
+enum Weekday: Int {
+	case sunday = 1, monday, tuesday, wednesday, thursday, friday, saturday
+	
+	static var today: Weekday {
+		let cal = Calendar.current
+		let today = Date()
+		let weekday = cal.component(.weekday, from: today) // 1
+		return Weekday(rawValue: weekday)! // sunday
+	}
+}
+
+Weekday.today // sunday
 
 
 

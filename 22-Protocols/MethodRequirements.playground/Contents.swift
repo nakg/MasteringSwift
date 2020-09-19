@@ -25,4 +25,39 @@ import UIKit
  # Method Requirements
  ![method](method.png)
  */
+protocol Ressettable {
+	mutating func reset()
+	static func reset_static()
+}
+
+class Size: Ressettable {
+	var width = 0.0
+	var height = 0.0
+	
+	func reset() {
+		width = 0.0
+		height = 0.0
+	}
+	
+	// overridng을 허용함과 동시에, 프로토콜의 요구사항을 충족시킴.
+	class func reset_static() {
+		
+	}
+}
+
+// 만약, 프로토콜에서 mutating이 없으면 아래 코드를 구현할 수 없다.
+struct Size2: Ressettable {
+	var width = 0.0
+	var height = 0.0
+	
+	mutating func reset() {
+		width = 0.0
+		height = 0.0
+	}
+	
+	static func reset_static() {
+		
+	}
+}
+
 

@@ -45,6 +45,12 @@ class Size: Resettable {
 
 let s = Size()
 
+s is Resettable // True.
+s is ExpressibleByNilLiteral // false.
+
+let r = Size() as Resettable // Resettable 형식으로 r에 저장.
+r as? Size // 원래 형식으로 캐스팅. 원래형식으로 돌아갈 때에는, 컴파일 타임 캐스팅은 불가하다.
+
 
 
 

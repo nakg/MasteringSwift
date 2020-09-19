@@ -24,7 +24,46 @@ import UIKit
 /*:
  # Overloading
  */
+func process(value: Int) {
+	print("process Int")
+}
 
+func process(value: String) {
+	print("process Int")
+}
 
+func process(value: String, anotherValue: String) {
+	
+}
 
+func prcoess(_ value: String) {
+	
+}
 
+func process(value: Double) -> Int {
+	return Int(value)
+}
+
+func process(value: Double) -> String? {
+	return String(value)
+}
+
+let result: Int = process(value: 12.34)
+let result2: Int = process(value: 12.34) as Int
+
+process(value: 3)
+process(value: "hi")
+
+struct Rectangle {
+	func area() -> Double {
+		return 0.0
+	}
+	
+	static func area() -> Double {
+		return 0.0
+	}
+}
+
+let r = Rectangle()
+r.area()
+Rectangle.area()

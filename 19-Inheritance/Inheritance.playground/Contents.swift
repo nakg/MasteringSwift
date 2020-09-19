@@ -25,9 +25,27 @@ import UIKit
  # Inheritance
  ![inheritance](inheritance.png)
  */
+class Figure {
+	var name = "Unknown"
+	
+	init(name: String) {
+		self.name = name
+	}
+	
+	func draw() {
+		print("draw \(name)")
+	}
+}
 
+class Circle: Figure {
+	var radius = 0.0 // 직접 속성 선언.
+}
 
-
+// Access.
+let c = Circle(name: "Circle") // Circle class에는 생성자가 구현되어있지 않지만, Figure에서 상속받았다.
+c.radius // Circle Class에 선언되어있는 property.
+c.name // Circle.
+c.draw()
 
 
 
@@ -36,7 +54,16 @@ import UIKit
  ## final class
  ![final class](final-class.png)
  */
+// - 상속을 막고 싶으면, final class로 선언한다. 자기는 상속할 수 있지만, 다른애들이 상속 못받게 한다.
+final class Rectangle: Figure {
+	var width = 0.0
+	var height = 0.0
+}
 
+//class Square: Rectangle {
+//	
+//}
+// -> 에러.
 
 
 

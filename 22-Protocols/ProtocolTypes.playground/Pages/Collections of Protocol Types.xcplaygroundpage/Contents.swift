@@ -56,7 +56,18 @@ let t = Triangle()
 let r = Rectangle()
 let c = Circle()
 
+let list: [Figure] = [t, r, c] // 모든 인스턴스의 저장. 값인지 객체인지 상관없이 figure로 캐스팅해서 저장한다.
+// item은 figure 프로토콜 타입. 여기선 draw만 사용이 가능하다. 업캐스팅 느낌.
+for item in list {
+	item.draw()
+	
+	// 값형식의 접근.
+	if let c = item as? Circle {
+		c.radius
+	}
+}
 
+// 클래스에서 구현한 업캐스팅과 다운캐스팅을, 상속이 지원되지 않는 값형식에서도 유사하게 구현할 수 있다. 함께 처리하는 것도 가능하다.
 
 
 

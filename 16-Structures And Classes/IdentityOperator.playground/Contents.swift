@@ -26,8 +26,21 @@ import UIKit
  ![identity-op](identity-op.png)
  */
 
+class A {
+	
+}
 
+let a = A() // 생성.
+let b = a // 저장.
+let c = A() // 생성.
 
+a === b // true.
+a !== b // false.
+
+a === c // false.
+a !== c // true.
+
+// 메모리가 동일하다 -> Identical 하다.  값이 동일하다 -> Equal 하다.
 
 
 

@@ -26,12 +26,34 @@ import UIKit
  ![property](property.png)
  */
 
+protocol Figure {
+	var name: String { get set } // get set 모두 최소한 포함해야함.
+}
 
+// 읽기만 가능해도 요구사항 충족.
+struct Rectangle2: Figure {
+	var name: String
+}
 
+struct Rectangle: Figure {
+//	let name = "Rect" // 상수 저장속성은 set을 커버하지 못해서 사용 못함. set 없으면 let으로도 var name: 을 받을 수 있다.
+	var name = "Rect"
+}
 
+struct Triangle: Figure {
+	var name = "Triangle"
+}
 
-
-
+class Circle: Figure {
+	var name: String {
+		get {
+			return "Circle"
+		}
+		set {
+			
+		}
+	}
+}
 
 
 

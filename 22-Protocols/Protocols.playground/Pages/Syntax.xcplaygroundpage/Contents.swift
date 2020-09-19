@@ -27,7 +27,9 @@ import UIKit
  ![protocol-inheritance](protocol-inheritance.png)
  */
 
-
+protocol SomeThing {
+	func doSomething() // protocol채용한 형식은, doSomething을 사용해야한다. 프로토콜을 채용한다고 명시적으로 선언도 해야한다.
+}
 
 
 
@@ -37,6 +39,11 @@ import UIKit
  ![adopting](adopting.png)
  */
 
+struct Size: SomeThing {
+	func doSomething() {
+		
+	}
+}
 
 
 
@@ -46,6 +53,14 @@ import UIKit
  # Class-Only Protocols
  ![class-only](class-only.png)
  */
+// AnyObject를 상속한 프로토콜은, 참조형에서만 사용할 수 있다. 구조체나 열거형은 사용 불가.
+protocol SomethingObject: AnyObject, SomeThing {
+	
+}
 
-
+class Object: SomethingObject {
+	func doSomething() {
+		
+	}
+}
 

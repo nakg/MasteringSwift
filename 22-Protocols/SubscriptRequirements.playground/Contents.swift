@@ -26,4 +26,18 @@ import UIKit
  ![subscript](subscript.png)
  */
 
+protocol List {
+	subscript(idx: Int) -> Int { get }
+}
 
+struct DataStore: List {
+	subscript(idx: Int) -> Int {
+		get {
+			return 0
+		}
+		// set있어도 되긴 한다. 프로토콜은 최소 구현사항.
+		set {
+			
+		}
+	}
+}

@@ -25,13 +25,27 @@ import UIKit
  # Optional Protocol Requirements
  ![optional](optional.png)
  */
-
-protocol Drawable {
-   var strokeWidth: Double { get set }
-   var strokeColor: UIColor { get set }
+// draw 멤버를 제외하고 다 옵셔널로 만들어보자. 원래는 프로토콜에 선언된 모든 멤버를 선언해야 했다.
+@objc protocol Drawable {
+   @objc optional var strokeWidth: Double { get set }
+   @objc optional var strokeColor: UIColor { get set }
    func draw()
-   func reset()
+   @objc optional func reset()
 }
+
+class Rectangle: Drawable {
+	func draw() {
+		
+	}
+}
+
+let r: Drawable = Rectangle() // 프로토콜 형식으로 저장.
+r.draw()
+r.strokeColor // optional type. nil.
+r.strokeWidth // optional type. nil.
+r.reset?() // 선택적 메서드는, 선택적 속성과 마찬가지로 옵셔널 형식으로 대체된다. () 앞에 ?. 옵셔널 체이닝 연산자의 추가. nil.
+
+
 
 
 

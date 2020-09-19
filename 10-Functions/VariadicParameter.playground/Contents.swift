@@ -26,8 +26,19 @@ import UIKit
  ![variadic](variadic.png)
  */
 
+print("Hello") // argument가 한개이다.
+print("Hello", "Swift") // argument가 2개이다. 그런데 parameter 는 1개이다.. 이게 가변파라미터.
 
+func printSum(of nums: Int...) {
+	var sum = 0
+	for num in nums {
+		sum += num
+	}
+	print(sum)
+}
 
+printSum(of: 1, 2, 3)
+printSum(of: 1, 2, 3, 4, 5)
 
 
 

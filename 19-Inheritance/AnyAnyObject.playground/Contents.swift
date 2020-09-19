@@ -25,10 +25,21 @@ import Foundation
 /*:
  # Any, AnyObject
  */
+var data: Any = 1
+data = 2.3
+data = "str"
+data = [1, 2, 3]
+data = NSString() // 참조형식 클래스 저장.
 
+var obj: AnyObject = NSString() // class 저장.
+//obj = 1 // 값 형식 넣으면 에러 발생.
 
-
-
+// NSString과 String은 Bridging
+if let str = data as? String {
+	print(str.count) // 0
+} else if let list = data as? [Int] {
+	
+}
 
 
 
@@ -40,7 +51,16 @@ import Foundation
 /*:
  # Type Casting Pattern
  */
-
+switch data {
+case let str as String:
+	print(str.count)
+case let list as [Int]:
+	print(list.count)
+case is Double:
+	print("Double Value")
+default:
+	break
+}
 
 
 

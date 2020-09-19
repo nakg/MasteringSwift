@@ -26,8 +26,28 @@ import Foundation
 /*:
  # Regular Expression
  */
+let emailPattern = "([0-9a-zA-Z_-]+)@([0-9a-zA-Z_-]+)(\\.[0-9a-zA-Z_-]+){1,2}"
+let emailAddress = "user@example.com"
 
+if let _ = emailAddress.range(of: emailPattern) { // 문자열 자체를 비교. 바인딩 실패.
+	print("found")
+} else {
+	print("not found")
+}
 
+// 첫번째 파라미터를 정규식으로 생각하고 처리한다.
+if let _ = emailAddress.range(of: emailPattern, options: [.regularExpression]) {
+	print("found")
+} else {
+	print("not found")
+}
+
+// range 메서드는 이를 포함하기만 하면 되는 구조이다. 가령 이메일 뒤에 이상한 이모티콘 들어가도 이게 허용됨. range범위가 전체범위와 같은지 확인하여야 한다.
+if let range = emailAddress.range(of: emailPattern, options: [.regularExpression]), (range.lowerBound, range.upperBound) == (emailAddress.startIndex, emailAddress.endIndex) {
+	print("found")
+} else {
+	print("not found")
+}
 
 
 

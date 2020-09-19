@@ -26,7 +26,13 @@ import Foundation
 /*:
  # Diacritic Insensitive
  */
+let a = "Cafe"
+let b = "Café"
 
+a == b // false
+a.compare(b) == .orderedSame // false. 스위프트는 스트링을 비교할 때, 눈으로 보이는 최종 결과값을 비교한다.
+
+a.compare(b, options: [.diacriticInsensitive]) == .orderedSame // true.
 
 
 

@@ -22,21 +22,29 @@
 import UIKit
 
 /*:
- # Deinitializer
- ![deinit](deinit.png)
- */
+# Deinitializer
+![deinit](deinit.png)
+*/
 
 class Size {
-   var width = 0.0
-   var height = 0.0
+	var width = 0.0
+	var height = 0.0
 }
 
 class Position {
-   var x = 0.0
-   var y = 0.0
+	var x = 0.0
+	var y = 0.0
 }
 
 class Rect {
-   var origin = Position()
-   var size = Size()
+	var origin = Position()
+	var size = Size()
+	
+	// deinit까지는 self 접근이 가능.
+	deinit {
+		print("deinit \(self)")
+	}
 }
+
+var r: Rect? = Rect()
+r = nil // memory에 있는 Rect instance가 제거된다. 자동으로 프로퍼티도 제공되서 deinit을 구현하는 일은 거의 없다.

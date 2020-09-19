@@ -39,7 +39,7 @@ class Person {
 
 class Car {
    var model: String
-   weak var lessee: Person?
+   weak var lessee: Person? // 약한참조. person instance를 참조하지만 소유하지는 않는다. 그래서 강한참조 싸이클이 제거된다.
    
    init(model: String) {
       self.model = model
@@ -54,10 +54,10 @@ var person: Person? = Person()
 var rentedCar: Car? = Car(model: "Porsche")
 
 person?.car = rentedCar
-rentedCar?.lessee = person
+rentedCar?.lessee = person // 3. 여기가 바뀐다. 약한참조이기에 person 인스턴스를 소유하지 않는다. 카운트가 오르지 않는다.
 
-person = nil
-rentedCar = nil
+person = nil // 4. person은 카운트가 0이된다. 메모리에서 제거가된다. -> 이 때 car속성이 제거되면서, car인스턴스에대한 소유권을 자동으로 포기한다. 그래서 car instance의 카운트가 1 감소하고, lessee속성은 nil로 초기화된다. 약한참조는 참조하는 인스턴스가 해지되면, 자동으로 nil로 초기화된다. person deinit 출력.
+rentedCar = nil // 5. car instance 메모리 해제.
 
 
 

@@ -24,5 +24,30 @@ import UIKit
 /*:
  # Adding Subscripts
  */
+extension String {
+	subscript(idx: Int) -> String? {
+		guard (0..<count).contains(idx) else {
+			return nil
+		}
+		
+		let target = index(startIndex, offsetBy: idx)
+		return String(self[target]) // self expression 사용.
+	}
+}
 
+let str = "Swift"
+str[1] // "w"
+str[3] // "f"
+str[100] // nil
 
+extension Date {
+	subscript(component: Calendar.Component) -> Int? {
+		let cal = Calendar.current
+		return cal.component(component, from: self)
+	}
+}
+
+let today = Date()
+today[.year] // 2020.
+today[.month] // 9.
+today[.day] // 10.

@@ -23,13 +23,13 @@
 import UIKit
 
 /*:
- # Generics
- */
+# Generics
+*/
 
 func swapInteger(lhs: inout Int, rhs: inout Int) {
-   let tmp = lhs
-   lhs = rhs
-   rhs = tmp
+	let tmp = lhs
+	lhs = rhs
+	rhs = tmp
 }
 
 var a = 10
@@ -41,28 +41,41 @@ b
 
 
 func swapInteger16(lhs: inout Int16, rhs: inout Int16) {
-   // ...
+	// ...
 }
 
 func swapInteger64(lhs: inout Int64, rhs: inout Int64) {
-   // ...
+	// ...
 }
 
 func swapDouble(lhs: inout Double, rhs: inout Double) {
-   // ...
+	// ...
 }
 
 
 /*:
- ## Generic Function
- ![generic-function](generic-function.png)
- */
+## Generic Function
+![generic-function](generic-function.png)
+*/
 
 func swapValue<T>(lhs: inout T, rhs: inout T) {
-   let tmp = lhs
-   lhs = rhs
-   rhs = tmp
+	let tmp = lhs
+	lhs = rhs
+	rhs = tmp
 }
+
+a = 1
+b = 2
+swapValue(lhs: &a, rhs: &b)
+a
+b
+
+var c = 1.2
+var d = 3.4
+swapValue(lhs: &c, rhs: &d) // Double도 가능하다. 컴파일러가 알아서 대체코드를 만들어내서 사용한다.
+c
+d
+
 
 
 

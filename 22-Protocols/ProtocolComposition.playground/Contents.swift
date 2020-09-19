@@ -64,11 +64,18 @@ class Oval: Circle {
 let r: Resettable = Size()
 let p: Printable = Size()
 
+// 두 프로토콜을 모두 충족시키는 프로토콜을 저장시켜보자. -> Protocol Composition
+var rp: Resettable & Printable = Size() // Size 클래스가 두 프로토콜을 모두 채용하기에 이게 가능하다.
+// rp = Circle() // -> rp는 두 프로토콜을 모두 채용한 인스턴스만 저장할 수 있다.
+
+
 
 /*:
  ![composition2](composition2.png)
  */
 
+var cr: Circle & Resettable = Circle() // Class X Protocol
+cr = Oval() // Circle 상속받고, Circle 통해서 Reseetable도 채택한다. 가능.
 
 
 

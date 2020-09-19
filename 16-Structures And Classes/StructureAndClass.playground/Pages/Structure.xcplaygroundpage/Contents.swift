@@ -26,9 +26,32 @@ import UIKit
  ![Struct](struct.png)
  */
 
+struct Person {
+	// property.
+	var name: String
+	var age: Int
+	
+	// 메서드는 함수와 동일한 방식.
+	func speak() {
+		print("Hello")
+	}
+}
+// Person 구조체는 설계도일 뿐이다. 바로 상품이 만들어지는건 아니다. 생성까진 안함.
 
+// 인스턴스를 생성해보자.
+let p = Person(name: "Steve", age: 50) // 새로운 메모리공간이 만들어진다. 인스턴스 생성.
 
+// 속성에 접근해보자.
+let name = "Paul"
+name // 이건 그냥 상수의 접근. 구조체의 name 과는 접근법도 구조도 다르다.
 
+p.name // name에 접근.
+p.age // age에 접근.
+
+// 메서드를 호출해보자.
+p.speak()
+
+// -> 함수는 이름만으로 호출한다. 반면, 메서드는 인스턴스 이름을 통해 호출한다.
 
 
 

@@ -29,7 +29,7 @@ import UIKit
  ## Calling Functions
  ![call](call.png)
  */
-
+print("hello")
 
 
 
@@ -45,6 +45,11 @@ import UIKit
  ![define](define.png)
  */
 
+func sayHello() {
+	print("hello")
+}
+
+sayHello()
 
 
 

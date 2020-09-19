@@ -27,8 +27,12 @@ import Foundation
  # Width Insensitive Option
  */
 
+let a = "\u{30A1}"
+let b = "\u{ff67}"
 
-
+a == b // false
+a.compare(b) == .orderedSame // false
+a.compare(b, options: [.widthInsensitive]) == .orderedSame // true
 
 
 

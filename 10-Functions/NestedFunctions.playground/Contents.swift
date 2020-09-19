@@ -25,6 +25,19 @@ import UIKit
  # Nested Functions
  */
 
+// inner 함수가, outer 함수에 Nested 되었다. 호출할 수 있는 범위가 달라진다.
+func outer() -> () -> () {
+	func inner() {
+		print("inner")
+	}
+	inner()
+	print("outer")
+	
+	return inner
+}
+
+let f = outer()
+f()
 
 
 

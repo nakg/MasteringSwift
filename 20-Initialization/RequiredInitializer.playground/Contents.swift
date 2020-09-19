@@ -24,25 +24,39 @@
 import Foundation
 
 /*:
- # Required Initializer
- ![required](required.png)
- */
+# Required Initializer
+![required](required.png)
+*/
 
 class Figure {
-   var name: String
-
-   init(name: String) {
-      self.name = name
-   }
-
-   func draw() {
-      print("draw \(name)")
-   }
+	var name: String
+	
+	required init(name: String) {
+		self.name = name
+	}
+	
+	func draw() {
+		print("draw \(name)")
+	}
 }
 
 class Rectangle: Figure {
-   var width = 0.0
-   var height = 0.0
+	var width = 0.0
+	var height = 0.0
+	
+	// 에러발생. 리콰이어드 해야한다.
+//	init() {
+//		width = 0.0
+//		height = 0.0
+//		super.init(name: "unknown")
+//	}
+	
+	// 슈퍼클래스와 동일한 init을 서브클래스에서 구현하는것은 overriding이다. 이때는 override init. required init을 구현할 때에는, 슈퍼클래스와 완전히 동일한 형태로 구현한다. Ractange을 상속하는 다른 클래스들이 다시 init을 구현하도록 강제하기 위해.
+	required init(name: String) {
+		width = 0.0
+		height = 0.0
+		super.init(name: name)
+	}
 }
 
 
