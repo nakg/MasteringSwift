@@ -27,10 +27,42 @@ import Foundation
  # Anchored Option
  */
 
+let str = "Swift Programming"
+
+if let range = str.range(of: "Swift") {
+	print(str.distance(from: str.startIndex, to: range.lowerBound)) // 0이 출력된다. 1번째 문자.
+} else {
+	print("not found")
+}
+
+if let range = str.range(of: "Swift", options: [.backwards]) {
+	print(str.distance(from: str.startIndex, to: range.lowerBound)) // 0이 출력된다. 1번째 문자. 위와 동일.
+} else {
+	print("not found")
+}
+
+if let range = str.range(of: "Swift", options: [.anchored]) {
+	print(str.distance(from: str.startIndex, to: range.lowerBound)) // 0이 출력된다. 1번째 문자.
+} else {
+	print("not found")
+}
+
+if let range = str.range(of: "Swift", options: [.anchored, .backwards]) {
+	print(str.distance(from: str.startIndex, to: range.lowerBound)) // not found를 출력.
+} else {
+	print("not found")
+}
+
+str.lowercased().hasPrefix("swift")
+if let _ = str.range(of: "swift", options: [.anchored, .caseInsensitive]) {
+	print("same Prefix")
+}
 
 
-
-
+str.lowercased().hasSuffix("programming")
+if let _ = str.range(of: "programming", options: [.backwards, .anchored, .caseInsensitive]) {
+	print("same Suffix")
+}
 
 
 

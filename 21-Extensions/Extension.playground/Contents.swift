@@ -32,5 +32,22 @@ struct Size {
     var height = 0.0
 }
 
+extension Size {
+	// computedProperty 추가.
+	var area: Double {
+		return width * height // extension에서 기존 속성에 접근하는 것은 가능하다.
+	}
+}
 
+let s = Size()
+s.width
+s.height
+s.area
 
+// protocol 채용. - extension을 활용해서, protocol 구현을 추가할 수 있다.
+extension Size: Equatable {
+	// 연산자 메서드 구현.
+	public static func == (lhs: Size, rhs: Size) -> Bool {
+		return lhs.width == rhs.width && lhs.height == rhs.height
+	}
+}

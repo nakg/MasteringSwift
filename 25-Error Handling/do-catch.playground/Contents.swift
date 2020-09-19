@@ -44,3 +44,21 @@ func parsing(data: [String: Any]) throws {
    // Parsing
 }
 
+func handleError() throws {
+	do {
+		try parsing(data: [:])
+	} catch {
+		if let error = error as? DataParsingError {
+			switch error {
+			case .invalidType:
+				print("invalid type")
+			default:
+				print("handle error")
+			}
+		}
+	}
+}
+
+
+
+

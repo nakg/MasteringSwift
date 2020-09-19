@@ -24,14 +24,16 @@
 import Foundation
 
 /*:
- # Type Constraints
- ![type-constraints](type-constraints.png)
- */
+# Type Constraints
+![type-constraints](type-constraints.png)
+*/
 
-func swapValue<T>(lhs: inout T, rhs: inout T) {
-   let tmp = lhs
-   lhs = rhs
-   rhs = tmp
+func swapValue<T: Equatable>(lhs: inout T, rhs: inout T) {
+	if lhs == rhs { return }
+	
+	let tmp = lhs
+	lhs = rhs
+	rhs = tmp
 }
 
 

@@ -26,7 +26,24 @@ import UIKit
  ![property-observer](property-observer.png)
  */
 
+//class Size {
+//   var width = 0.0
+//}
+
+// 속성이 변경되는 순간의 코드를 추가하고싶다면?
+
 class Size {
-   var width = 0.0
+	var width = 0.0 {
+		willSet {
+			print(width, "=>", newValue)
+		}
+		didSet {
+			print(oldValue, "=>", width)
+		}
+	}
 }
 
+let s = Size() // 구조체가 아닌, 클래스는 let으로 클래스 선언해도 속성에대한 변경이 가능함.
+s.width = 123
+// -> 0.0 => 123.0
+// 0.0 => 123.0

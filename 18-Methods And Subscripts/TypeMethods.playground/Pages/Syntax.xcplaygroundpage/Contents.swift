@@ -28,7 +28,29 @@ import UIKit
  ![call](call.png)
  */
 
+class Circle {
+	static let pi = 3.14
+	var radius = 0.0
 
+	// 인스턴스 메서드.
+	func getArea() -> Double {
+		return radius * radius * Circle.pi
+	}
+	
+	// 타입 메서드.
+	class func printPi() {
+		print(pi) // pi 속성에 직접 접근한다. 이처럼 타입 속성엔 직접 접근하지만, 인스턴스 속성엔 접근할 수 없다.
+	}
+}
+Circle.printPi() // 타입메서드 호출.
+
+// Circle 클래스를 상속한, StrokeCircle
+class StrokeCircle: Circle {
+	// static 키워드로 선언한 타입 메서드를, 서브클래스에서 오바리이드 할 수 없다!! 인스턴스 메서드에도 같은 규칙이 적용된다.
+	override static func printPi() {
+		print(pi)
+	}
+}
 
 
 

@@ -24,10 +24,16 @@ import UIKit
 /*:
  # Multiline String Literal
  */
+let loremIpsum = "sadfgojsdgjs gsadjogsjao gasdjogsjao sgjosgdjo asgjogsajo sgdjo gasoj gsdj sgdjosgdoj asgdjo gsaoj sgdjosgdaj ogasdj osdg gsdjogsjodsogj saogd"
 
 
 
-
+let multiline = """
+lora
+abd sadfsda  sdafsadfa
+   dsfasfsa
+"""
+print(multiline)
 
 
 

@@ -27,9 +27,23 @@ import UIKit
  ![throw](throw.png)
  ![throws](throws.png)
  */
+// Error 프로토콜 채용. 필수멤버가 없다.
+enum DataParsingError: Error {
+	case invalidType
+	case invalidField
+	case missingRequiredField(String)
+}
 
-
-
+// Throwing function 구현.
+func parsing(data: [String: Any]) throws {
+	guard let _ = data["name"] else {
+		throw DataParsingError.missingRequiredField("name") // throw문은 return과 마찬가지로, code 블록의 실행을 즉시 종료한다.
+	}
+	
+	guard let _ = data["age"] else {
+		throw DataParsingError.invalidType
+	}
+}
 
 
 
@@ -39,7 +53,7 @@ import UIKit
  # try Statements
  ![try](try.png)
  */
-
+try? parsing(data: [:]) // parsing함수 호출. optional try로 빈 문자열 전달. -> nil 리턴.
 
 
 

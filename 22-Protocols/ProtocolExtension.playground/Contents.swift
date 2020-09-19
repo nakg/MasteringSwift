@@ -25,10 +25,27 @@ import UIKit
  # Protocol Extension
  */
 
+
 protocol Figure {
     var name: String { get }
     func draw()
 }
 
+// Protocol을 채용한 형식이, Equatable을 채용한 경우에만 추가되게 where절 추가.
+extension Figure where Self: Equatable {
+	func draw() {
+		print("draw figure")
+	}
+}
 
+struct Rectangle: Figure, Equatable {
+	var name = ""
+	
+	// extension에 프로토콜의 기본구현을 추가했으므로, 굳이 draw를 구현하지 않아도 자동으로 생성된다. 여기서 굳이 draw를 추가하면, extension이 무시되고 형식에서 직접 구현한 멤버가 더 우선순위를 갖는다. 단, extension의 where절 까지 충족시켜야 한다.
+	func draw() {
+		print("draw Ractangle") // extension이 아닌 이게 출력됨.
+	}
+}
 
+let r = Rectangle()
+r.draw()

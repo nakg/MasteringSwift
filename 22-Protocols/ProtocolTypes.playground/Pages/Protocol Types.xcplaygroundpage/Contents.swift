@@ -27,19 +27,25 @@ import Foundation
  */
 
 protocol Resettable {
-   func reset()
+	func reset()
 }
 
 class Size: Resettable {
-   var width = 0.0
-   var height = 0.0
-   
-   func reset() {
-      width = 0.0
-      height = 0.0
-   }
+	var width = 0.0
+	var height = 0.0
+	
+	func reset() {
+		width = 0.0
+		height = 0.0
+	}
 }
 
+let s = Size() // Type: Size
+
+let r: Resettable = Size() // protocol은 형식으로 사용할 수 있고, Reseetable 프로토콜을 채용하고있는 Size instance는 Resettable로 저장할 수 있다. -> Upcasting과 유사. 해당 프로토콜에 선언되어있는 멤버만 사용할 수 있다. width나 height는 접근 불가.
+r.reset()
+
+// 값 형식은 상속이 불가하지만, 프로토콜을 활용하면 상속과 유사하게 구현이 가능하다.
 
 
 

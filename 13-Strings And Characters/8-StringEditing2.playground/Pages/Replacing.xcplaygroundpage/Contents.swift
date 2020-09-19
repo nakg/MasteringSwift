@@ -26,7 +26,27 @@ import Foundation
  # Replacing Substrings
  */
 
+var str = "Hello, Objective-C"
 
+// 무엇을 고를지 확실히 알면, range of를 사용하는것이 편하다.
+if let range = str.range(of: "Objective-C") {
+	str.replaceSubrange(range, with: "Swift")
+}
+str
 
+if let range = str.range(of: "Hello") {
+	let s = str.replacingCharacters(in: range, with: "Hi")
+	s
+	str
+}
 
+// 바로 대체하고, 리턴형을 남김.
+var s = str.replacingOccurrences(of: "Swift", with: "Awesome Swift")
+s
+
+s = str.replacingOccurrences(of: "swift", with: "Awesome Swift") // 문자열비교는 대소문자를 비교하기에, 이는 먹히지 않는다.
+s
+// 대소문자를 구분하지 않으면서 해보자.
+s = str.replacingOccurrences(of: "swift", with: "Awesome Swift", options: [.caseInsensitive])
+s
 //: [Next](@next)

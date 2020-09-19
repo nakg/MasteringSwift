@@ -25,8 +25,59 @@ import UIKit
  # Adding Methods
  */
 
+extension Double {
+	// 화씨온도로 변환하는 메서드.
+	func toFahrenheit() -> Double {
+		return self * 9 / 5 + 32
+	}
+	
+	// 섭씨온도로 변환하는 메서드.
+	func toCelsius() -> Double {
+		return (self - 32) * 5 / 9
+	}
+	
+	// Type metohds.
+	static func converToFahrenheit(from celsius: Double) -> Double {
+		return celsius.toFahrenheit() // 인스턴스 메서드 활용.
+	}
+}
+
+
+let c = 30.0
+c.toFahrenheit() // 86
+
+Double.converToFahrenheit(from: 30.0) // 86
+
+
+// 날짜를 문자열로 포맷팅하는 메서드.
+extension Date {
+	func toString(format: String = "yyyyMMdd") -> String {
+		let privateFormatter = DateFormatter()
+		privateFormatter.dateFormat = format
+		return privateFormatter.string(from: self)
+	}
+}
+
+let today = Date()
+today.toString() // parameter 생략 사용. 20200910.
+today.toString(format: "MM/dd/yyyy") // 09/10/2020.
 
 
 
+// 지정된 길이의 랜덤 문자열을 생성하는 메서드.
+extension String {
+	static func random(length: Int, charactersIn chars: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
+		var randomString = String()
+		randomString.reserveCapacity(length) // 메모리 할당.
+		
+		for _ in 0 ..< length {
+			guard let char = chars.randomElement() else {
+				continue
+			}
+			randomString.append(char)
+		}
+		return randomString
+	}
+}
 
-
+String.random(length: 5) // GpOBU

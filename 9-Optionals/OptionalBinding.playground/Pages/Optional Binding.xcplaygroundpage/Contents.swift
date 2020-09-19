@@ -24,57 +24,64 @@ import Foundation
 /*:
  # Optional Binding
  */
-var num: Int? = nil
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*:
- ## Syntax
- ![optional-binding-syntax](optional-binding-syntax.png)
- */
-
-if num != nil {
-	print(num!) // 이 블락 안에서 num은 Optional Int이다.
-} else {
-	print("empty")
-}
-
+let num: Int? = 123
+let numNonOptional: Int = 123
 if let num = num {
-	print(num) // 이 블락 안에서 num은 unwrapping이 완료되어, Int이다.
-} else {
-	print("empty")
+}
+if let num: Int = num {
+	type(of: num)
+}
+if let num: Int? = num {
+	type(of: num)
 }
 
 
-var str: String? = "str"
-guard let str = str else {
-	fatalError()
-}
-str
+let num2: Int = numNonOptional
 
-num = 123
 
-if var num = num {
-	num = 456
-	print(num)
-}
 
-let a: Int? = 12
-let b: String? = "str"
 
-if let num = a, let str = b, str.count > 5 {
-	
-}
+
+
+
+
+
+
+
+
+//let num: Int? = 123
+//if num != nil {
+//	print(num!) // 이 블락 안에서 num은 Optional Int이다.
+//} else {
+//	print("empty")
+//}
+//
+//if let num = num {
+//	print(num) // 이 블락 안에서 num은 unwrapping이 완료되어, Int이다.
+//} else {
+//	print("empty")
+//}
+
+
+//var str: String? = "str"
+//guard let str = str else {
+//	fatalError()
+//}
+//str
+//
+//num = 123
+//
+//if var num = num {
+//	num = 456
+//	print(num)
+//}
+//
+//let a: Int? = 12
+//let b: String? = "str"
+//
+//if let num = a, let str = b, str.count > 5 {
+//
+//}
 
 
 

@@ -22,18 +22,36 @@
 import UIKit
 
 /*:
- # Associated Types
- ![associatedtype](associatedtype.png)
- */
+# Associated Types
+![associatedtype](associatedtype.png)
+*/
 
 protocol QueueCompatible {
-   func enqueue(value: Int)
-   func dequeue() -> Int?
+	associatedtype Element: Equatable // 연관형식을 Equatable 채용한 형식으로 제한.
+	func enqueue(value: Element)
+	func dequeue() -> Element?
 }
 
+class IntergerQueue: QueueCompatible {
+	typealias Element = Int
+	
+	func enqueue(value: Int) {
+		<#code#>
+	}
+	func dequeue() -> Int? {
+		<#code#>
+	}
+}
 
-
-
+class DoubleQueue: QueueCompatible {
+	// 연관형식을 생략해도, 알아서 추론을 한다. 실제로도 거의 생략함.
+	func enqueue(value: Double) {
+		<#code#>
+	}
+	func dequeue() -> Double? {
+		return 0
+	}
+}
 
 
 

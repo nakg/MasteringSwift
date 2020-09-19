@@ -40,4 +40,23 @@ func swapValue<T: Equatable>(lhs: inout T, rhs: inout T) {
    rhs = tmp
 }
 
+func swapValue(lhs: inout String, rhs: inout String) {
+	print("specialized version")
+	
+	// 대소문자 없이 구분.
+	if lhs.caseInsensitiveCompare(rhs) == .orderedSame {
+		return
+	}
+	
+	let tmp = lhs
+	lhs = rhs
+	rhs = tmp
+}
 
+var a = 1
+var b = 2
+swapValue(lhs: &a, rhs: &b) // 첫번째 함수가 호출된다.
+
+var c = "Swift"
+var d = "Programming"
+swapValue(lhs: &c, rhs: &d) // 특수화로 구현한 함수는 generic을 override 해버린다. 우선순위가 더 높다.

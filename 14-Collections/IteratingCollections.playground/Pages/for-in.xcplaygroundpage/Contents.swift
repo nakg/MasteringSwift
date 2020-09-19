@@ -27,10 +27,29 @@ import UIKit
  ## for-in
  ![for-in](for-in.png)
  */
+// 배열의 열거.
+print("Array", "=================")
+let arr = [1, 2, 3]
+// 배열은 정렬컬렉션 이므로, 순서대로 출력된다.
+for num in arr {
+	print(num)
+}
 
+// set의 열거.
+print("Set", "=================")
+let set: Set = [1, 2, 3]
+// set은 정렬되지 않은 컬렉션이므로, 실행할때마다 순서가 바뀐다.
+for num in set {
+	print(num)
+}
 
-
-
+// Dictionary 열거.
+print("Dictionary", "=================")
+let dict = ["A": 1, "B": 2, "C": 3]
+// dict는 요소들이 튜플형태로 전달. 정렬되지는 않아서 열거순서는 변한다.
+for (key, value) in dict {
+	print(key, value)
+}
 
 
 

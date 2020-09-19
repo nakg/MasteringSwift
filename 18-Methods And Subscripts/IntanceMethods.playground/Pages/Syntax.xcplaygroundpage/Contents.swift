@@ -26,11 +26,40 @@ import UIKit
  ![Method](method.png)
  ![Call Method](call-method.png)
  */
+class Sample {
+	var data = 0
+	static var sharedData = 123
+	
+	func doSomething() {
+		print(data) // 데이터 속성에 접근.
+		Sample.sharedData // 타입멤버로 접근할 때에는, 형식이름을 통하여 접근한다.
+	}
+	
+	func call() {
+		doSomething() // 인스턴스 멤버에서, 다른 인스턴스 멤버에 접근. self 빼도 된다.
+	}
+}
+
+let a = Sample()
+a.data
+a.doSomething()
+a.call()
+// 메서드는 반드시 인스턴스 이름을 통하여 호출하여야 한다.
 
 
+struct Size {
+	var width = 0.0
+	var height = 0.0
+	
+	mutating func enlarge() { // 구조체에서는, 인스턴스 속성 바꾸려면 mutating으로 메서드 선언해야함.
+		width += 1.0
+		height += 1.0
+	}
+}
 
-
-
+var s = Size() // 값형식에서 인스턴스의 가변성은, 멤버의 가변성에 영향을 준다. 속성이 변수저장속성이더라도 값을 바꿀 수 없다. var로 해야함.
+s.enlarge()
+s.width
 
 
 

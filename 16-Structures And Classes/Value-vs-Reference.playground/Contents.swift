@@ -26,3 +26,35 @@ import UIKit
  ![val-ref](val-ref.png)
  */
 
+// 좌표를 저장하는, 구조체와 클래스를 선언하자.
+
+// Struct
+struct PositionValue {
+	var x = 0.0
+	var y = 0.0
+}
+
+// Class
+class PositionObject {
+	var x = 0.0
+	var y = 0.0
+}
+
+// cf) 속성은 선언과 동시에 기본값을 저장한다. -> 파라미터가 없는 기본 생성자가 제공된다.(Defaut Initialier)
+var v = PositionValue() // 0, 0
+var o = PositionObject() // 0, 0
+
+var v2 = v // 0, 0
+var o2 = o // 0, 0
+
+v2.x = 12
+v2.y = 34
+v // 0, 0
+v2 // 12, 34
+// v2에 저장되어있는 값은, v에 복사된 값을 갖는 복사본이다. v2의 값을 바꾸어도 v에 영향을 주지 않는다.
+
+o2.x = 12
+o2.y = 34
+o // 12, 34
+o2 // 12, 34
+// o2, o에도 바뀐값이 저장되어있다. 클래스는 새로운 복사본을 생성하지 않고 원본을 전달한다. 참조를 전달한다.

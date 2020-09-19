@@ -22,56 +22,57 @@
 import UIKit
 
 /*:
- # Result Type in Async Code
- */
+# Result Type in Async Code
+*/
 
 guard let url = URL(string: "http://kxcoding-study.azurewebsites.net/api/books") else {
-   fatalError("invalid url")
+	fatalError("invalid url")
 }
 
 struct BookListData: Codable {
-   let code: Int
-   let totalCount: Int
-   let list: [Book]
+	let code: Int
+	let totalCount: Int
+	let list: [Book]
 }
 
 struct Book: Codable {
-   let title: String
+	let title: String
 }
 
 typealias CompletionHandler = (BookListData?, Error?) -> ()
 
 func parseBookList(completion: @escaping CompletionHandler) {
-   let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-      if let error = error {
-         completion(nil, error)
-         return
-      }
-      
-      guard let data = data else {
-         completion(nil, nil)
-         return
-      }
-      
-      do {
-         let list = try JSONDecoder().decode(BookListData.self, from: data)
-         completion(list, nil)
-      } catch {
-         completion(nil, error)
-      }
-   }
-   task.resume()
+	// 데이터가 오면 아래 클로져가 실행. -> 이 후, 파라미터로 전달된 클로져를 실행.
+	let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+		if let error = error {
+			completion(nil, error)
+			return
+		}
+		
+		guard let data = data else {
+			completion(nil, nil)
+			return
+		}
+		
+		do {
+			let list = try JSONDecoder().decode(BookListData.self, from: data)
+			completion(list, nil)
+		} catch {
+			completion(nil, error)
+		}
+	}
+	task.resume()
 }
 
 parseBookList { (data, error) in
-   if let error = error {
-      print(error.localizedDescription)
-      return
-   }
-   
-   data?.list.forEach { print($0.title) }
+	if let error = error {
+		print(error.localizedDescription)
+		return
+	}
+	
+	data?.list.forEach { print($0.title) }
 }
 
 
 
- //: [Next](@next)
+//: [Next](@next)

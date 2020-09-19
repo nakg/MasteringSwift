@@ -39,11 +39,22 @@ import UIKit
 
 
 
-
 /*:
  ## Syntax
  ![inout-def](inout-def.png)
  ![inout-call](inout-call.png)
  */
+var num1 = 12
+var num2 = 34
+func swapNumber(_ a: inout Int, with b: inout Int) {
+	let tmp = a
+	a = b
+	b = tmp
+}
 
+num1
+num2
+swapNumber(&num1, with: &num2) // 이는 함수 바디에 복사본을 전달한다. 함수 바디에서 바꾼다고해도, 실제 두 변수는 바뀌지 않는다. 입출력 파라미터도 argument를 전달할 때에는, 반드시 &를 붙여야 한다.
+num1
+num2
 

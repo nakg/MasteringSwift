@@ -26,8 +26,19 @@ import UIKit
 /*:
  # Numeric Option
  */
+// 스위프트는 기본적으로, 문자에 할당되어있는 아스키 코드를 비교 한다. 사전순이 아니다.
+"A" < "B" // true
+"a" < "B" // false
 
+// 정렬을 한다고 해보자. 아래는 9가 앞에와야함.
+let file9 = "file9.txt"
+let file10 = "file10.text"
 
+file9 < file10 // false. 9가 1보다 크므로 file10이 더 작아지는 현상. 사전과 다른 순서.
+file9.compare(file10) == .orderedAscending // 위와 같은 이유로 false가 리턴된다.
+
+file9.compare(file10, options: [.numeric]) == .orderedAscending // 문자열에 포함된 숫자를, 숫자 자체로 비교하게 해준다.
+"a".compare("B", options: [.numeric]) == .orderedAscending
 
 
 

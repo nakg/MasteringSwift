@@ -29,7 +29,10 @@ import UIKit
 
 let data = ("<html>", 200, "ok", 12.34)
 
+let named = (body: "<html>", statusCode: 200, statusMessage: "OK", dataSize: 12.34)
 
+named.1 // 인덱스를 통한 접근도 가능.
+named.statusCode // Name으로도 접근 가능.
 
 
 

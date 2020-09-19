@@ -31,7 +31,7 @@ import Foundation
  ![array-literal](array-literal.png)
  */
 
-
+let nums = [1, 2, 3] // 자료형은 [Int]. [] 안에 하나의 자료형만 포함되어있다면 이게 배열이다. []사이에 표현식이나 literal이 있으면 배열 literal이다.
 
 
 
@@ -48,4 +48,7 @@ import Foundation
  ![array-type2](array-type2.png)
  */
 
+// 배열 자료형은 두가지 문법으로 표시할 수 있다. 아래가 단축문법.
+let strArray: Array<String> // 정식문법 선언.
+let strArray2: [String] // 단축문법 선언. 이걸 주로 사용함.
 

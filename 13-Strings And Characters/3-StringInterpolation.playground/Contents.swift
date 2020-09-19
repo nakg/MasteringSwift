@@ -24,8 +24,11 @@ import UIKit
  # String Interpolation
  ![placeholder](placeholder.png)
  */
+var str = "12.34KB"
 
-
+let size = 12.34
+str = String(size) + "KB" // double을 문자열로 바꾸고 저장.
+str = "\(size)KB"
 
 
 
@@ -42,17 +45,36 @@ import UIKit
  ![format-specifier](format-specifier.png)
  */
 
+str = String(format: "%.1fKB", size)
 
 
+String(format: "Hello, %@", "Swift")
+
+String(format: "%d", 12)
+
+String(format: "%f", 12.34)
+
+String(format: "[%d]", 123)
+String(format: "[%10d]", 123)
+String(format: "[%-10d]", 123)
+
+let firstName = "Yoon-ah"
+let lastName = "Lim"
+
+let korFormat = "그녀의 이름은 %2$@ %1$@ 입니다."
+let engFormat = "Her name is %@ %@."
+
+String(format: korFormat, firstName, lastName)
+String(format: engFormat, firstName, lastName)
 
 
+str = "\\"
+print(str)
 
+print("A\tB")
+//\t -> Tab 1번 추가.
 
+print("C\nD")
+//\n -> 계행 추가.
 
-
-
-
-
-
-
-
+print("\"Hello He said.\"")

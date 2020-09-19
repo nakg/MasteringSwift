@@ -24,52 +24,68 @@
 import Foundation
 
 /*:
- # Result Type in Async Code
- */
+# Result Type in Async Code
+*/
 
 guard let url = URL(string: "http://kxcoding-study.azurewebsites.net/api/books") else {
-   fatalError("invalid url")
+	fatalError("invalid url")
 }
 
 struct BookListData: Codable {
-   let code: Int
-   let totalCount: Int
-   let list: [Book]
+	let code: Int
+	let totalCount: Int
+	let list: [Book]
 }
 
 struct Book: Codable {
-   let title: String
+	let title: String
 }
 
 enum ApiError: Error {
-   case general
-   case invalidFormat
+	case general
+	case invalidFormat
 }
 
-typealias CompletionHandler = (BookListData?, Error?) -> ()
+typealias CompletionHandler = (Result<BookListData, ApiError>) -> ()
 
 func parseBookList(completion: @escaping CompletionHandler) {
-   let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-      if let error = error {
-         completion(nil, error)
-         return
-      }
-
-      guard let data = data else {
-         completion(nil, nil)
-         return
-      }
-
-      do {
-         let list = try JSONDecoder().decode(BookListData.self, from: data)
-         completion(list, nil)
-      } catch {
-         completion(nil, error)
-      }
-   }
-   task.resume()
+	let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+		if let error = error {
+			completion(.failure(.general))
+			return
+		}
+		
+		guard let data = data else {
+			completion(.failure(.general))
+			return
+		}
+		
+		do {
+			let list = try JSONDecoder().decode(BookListData.self, from: data)
+			completion(.success(list))
+		} catch {
+			completion(.failure(.general))
+		}
+	}
+	task.resume()
 }
 
+// 함수 호출.
+parseBookList { (result) in
+	switch result {
+	case .success(let data):
+		data.list.forEach { print($0.title) }
+	case .failure(let error):
+		print(error.localizedDescription)
+		// error의 개별적 처리.
+		switch error {
+		case .general:
+			break
+		case .invalidFormat:
+			break
+		}
+	}
+}
 
 
 

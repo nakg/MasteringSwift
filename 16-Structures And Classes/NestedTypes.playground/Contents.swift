@@ -26,9 +26,25 @@ import UIKit
  ![nested-type](nested-type.png)
  */
 
+class One {
+	struct Two {
+		enum Three {
+			case a
+			
+			class Four {
+				
+			}
+		}
+	}
+	
+	var a = Two() // One.Two() 라고 해도 된다.
+}
 
+// let two: Two = Two() // Two를 바로 접근하면, 선언되지 않은 형식을 사용한다고 에러가 난다.
+let two: One.Two = One.Two()
+let four: One.Two.Three.Four = One.Two.Three.Four()
 
-
+let a = One.Two.Three.a
 
 
 

@@ -44,5 +44,18 @@ func parsing(data: [String: Any]) throws {
    // Parsing
 }
 
+// parsing은 리턴이 없기에, _로 바인딩하겠다.
+if let _ = try? parsing(data: [:]) {
+	print("success")
+} else {
+	print("fail")
+}
 
+do {
+	try parsing(data: [:])
+	print("success")
+} catch {
+	print("fail")
+}
 
+try! parsing(data: [:])

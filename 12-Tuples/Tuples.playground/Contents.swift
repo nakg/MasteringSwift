@@ -28,10 +28,9 @@ import UIKit
  ![tuple-expr](tuple-expr.png)
  */
 
-
-
-
-
+let i = (12, 34)
+let data = ("<html>", 200, "OK", 12.34) // 데이터 상수의 자료형은 (String, Int, String, Double)
+data
 
 
 
@@ -42,9 +41,14 @@ import UIKit
  ## Explicit Member Expression
  ![eme](eme.png)
  */
+data.0
+data.1
+data.2
+data.3
 
-
-
+var mutalbleTuple = data
+mutalbleTuple.1 = 404
+mutalbleTuple.1 
 
 
 
